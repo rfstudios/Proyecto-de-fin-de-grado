@@ -1,0 +1,52 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class gestor : MonoBehaviour
+{
+	public static int lvlActual = 1;
+	protected static int desbloq = 11;
+	private static int lvlMax = 11;
+	
+	public static int desbloqueado
+	{
+		get
+		{
+			return desbloq;
+		}
+	}
+
+	public static void reloadLevel()
+	{
+		Control nivel=GameObject.FindWithTag("MainCamera").GetComponent<Control>();
+		nivel.vida--;
+
+		if(0 <= nivel.vida)
+		{
+			FadeTransition.FadeTo(lvlActual.ToString());
+		}
+		else
+		{
+			FadeTransition.FadeTo("gameover");
+		}
+	}
+
+	public static void addLevel()
+	{
+		desbloq++;
+		if(lvlMax <= desbloq)
+		{
+			FadeTransition.FadeTo("win");
+		}		
+	}
+
+	public static void goLevel(int lvl)
+	{
+		lvlActual = lvl;
+		FadeTransition.FadeTo(lvlActual.ToString());
+	}
+
+	public static void GameOver()
+	{
+		FadeTransition.FadeTo("gameover");
+	}
+}
