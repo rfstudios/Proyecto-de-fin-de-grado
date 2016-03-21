@@ -4,6 +4,7 @@ using System.Collections;
 public class Puerta : MonoBehaviour 
 {
 	protected Animator animator;
+	public AudioClip fx;
 
 	protected bool abierto;
 	public bool Abrete
@@ -28,5 +29,13 @@ public class Puerta : MonoBehaviour
 	{
 		if(!Abrete){return;}
 		FadeTransition.FadeTo("gestor");
+		SoundManager.PlayFX(fx);
+
+		if(gestor.desbloqueado == gestor.lvlActual)
+		{
+			gestor.addLevel();
+		}
+
+		GetComponent<Puerta>().enabled = false;
 	}
 }

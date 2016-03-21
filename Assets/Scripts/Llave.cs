@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Llave : MonoBehaviour 
 {
+	public AudioClip fx;
 	private float scal=0f;
 	private bool estado=false;
 	void Update () 
@@ -23,5 +24,7 @@ public class Llave : MonoBehaviour
 		
 		estado=true;		
 		GameObject.FindWithTag("Puerta").GetComponent<Puerta>().Abrete=true;
+
+		SoundManager.PlayFX(fx);
 	}
 }

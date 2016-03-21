@@ -4,6 +4,7 @@ using System.Collections;
 public class boton : MonoBehaviour 
 {
 	public int mio;
+	public AudioClip fx;
 	GameObject camara;
 	protected bool activo=false;
 	
@@ -23,11 +24,12 @@ public class boton : MonoBehaviour
 		}
 
 		GetComponent<Renderer>().enabled = activo;
-		GetComponent<Collider>().enabled = activo;
+		GetComponent<Collider2D>().enabled = activo;
 	}
 
 	void OnMouseUp()
 	{
 		gestor.goLevel(mio);
+		SoundManager.PlayFX(fx);
 	}
 }

@@ -1,0 +1,13 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class SoundManager
+{
+	public static void play_fx(AudioClip clip)
+	{
+		GameObject sndFx = Object.Instantiate(new GameObject(), Vector3.up, Quaternion.identity) as GameObject;
+		sndFX.AddComponent<AudioSource>();
+		sndFX.AddComponent<Snd_FX>();
+		
+	}
+}

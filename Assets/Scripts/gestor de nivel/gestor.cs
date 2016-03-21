@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class gestor : MonoBehaviour
+public class gestor
 {
 	public static int lvlActual = 1;
-	protected static int desbloq = 11;
+	private static int desbloq = 1;
 	private static int lvlMax = 11;
 	
 	public static int desbloqueado

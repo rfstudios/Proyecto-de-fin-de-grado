@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Puerta : MonoBehaviour 
 {
+	protected bool fin = false;
 	protected Animator animator;
+	public AudioClip fx;
 
 	protected bool abierto;
 	public bool Abrete
@@ -27,11 +29,15 @@ public class Puerta : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D coll)
 	{
 		if(!Abrete){return;}
+		if(fin){return;}
+
 		FadeTransition.FadeTo("gestor");
+		SoundManager.PlayFX(fx);
 
 		if(gestor.desbloqueado == gestor.lvlActual)
 		{
 			gestor.addLevel();
 		}
+		fin = true;
 	}
 }

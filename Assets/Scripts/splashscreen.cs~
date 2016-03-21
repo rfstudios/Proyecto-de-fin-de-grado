@@ -1,0 +1,18 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class splashscreen : MonoBehaviour
+{
+	public AudioClip fx;
+
+	void Start()
+	{
+		Invoke("cargar", 5.0f);
+		SoundManager.PlayFX(fx);
+	}
+
+	public void cargar()
+	{
+		FadeTransition.FadeTo("gestor", 0.5f);
+	}
+}

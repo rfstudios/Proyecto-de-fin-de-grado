@@ -4,6 +4,7 @@ using System.Collections;
 public class boton : MonoBehaviour 
 {
 	public int mio;
+	public AudioClip fx;
 	GameObject camara;
 	protected bool activo=false;
 	
@@ -29,5 +30,6 @@ public class boton : MonoBehaviour
 	void OnMouseUp()
 	{
 		gestor.goLevel(mio);
+		SoundManager.PlayFX(fx);
 	}
 }

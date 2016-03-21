@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class splashscreen : MonoBehaviour {
+public class splashscreen : MonoBehaviour
+{
+	public AudioClip fx;
 
-	// Use this for initialization
-	void Start () {
-	
+	void Start()
+	{
+		Invoke("cargar", 3.0f);
+		SoundManager.PlayFX(fx);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void cargar()
+	{
+		FadeTransition.FadeTo("gestor");
 	}
 }

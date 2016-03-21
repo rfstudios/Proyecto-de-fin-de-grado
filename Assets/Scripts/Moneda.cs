@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Moneda : MonoBehaviour 
 {
+	public AudioClip fx;
 	private bool est;
 	private Control componente;
 
@@ -43,5 +44,6 @@ public class Moneda : MonoBehaviour
 		estado=true;
 
 		GameObject.FindWithTag("MainCamera").GetComponent<Control>().puntuacion++;
+		SoundManager.PlayFX(fx);
 	}
 }

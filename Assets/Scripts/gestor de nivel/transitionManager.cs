@@ -84,16 +84,24 @@ public class transitionManager : MonoBehaviour
 		}		
 		else
 		{
+			FadeTransition.instance = null;
 			Destroy(gameObject);
 		}
 	}
 
-	public void FadeTransition(string _target)
+	public void _FadeTransition(string _target)
 	{
-		FadeTransition(_target, 3.0f);
+		_FadeTransition(_target, 3.0f);
 	}
-	public void FadeTransition(string _target, float _delay, float _wto = 0.0f)
+	public void _FadeTransition(string _target, float _delay, float _wto = 0.0f)
 	{
+		if(null != FadeTransition.instance)
+		{
+			Destroy(gameObject);
+		}
+
+		FadeTransition.instance = this;
+
 		target = _target;
 		delay = _delay;
 		isFading = true;
@@ -106,15 +114,19 @@ public class transitionManager : MonoBehaviour
 
 public class FadeTransition 
 {
+	public static transitionManager instance = null;
+
 	public static void FadeTo(string target)
 	{
 		FadeTo(target, 3.0f);
 	}
+
 	public static void FadeTo(string target, float delay, float waitToOut = 0.0f)
 	{
-		GameObject f = Object.Instantiate(new GameObject(), new Vector3(0,0,0), Quaternion.identity) as GameObject;
+		GameObject f = new GameObject();
 		f.AddComponent<transitionManager>();
-		f.GetComponent<transitionManager>().FadeTransition(target, delay, waitToOut);
+		f.GetComponent<transitionManager>()._FadeTransition(target, delay, waitToOut);
 		f.transform.name = "FadeTransition";
+		Object.Instantiate(f, new Vector3(0,0,0), Quaternion.identity);
 	}
 }
